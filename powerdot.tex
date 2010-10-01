@@ -1,0 +1,57 @@
+% Powerdot presentation
+\documentclass[display=slides, mode=present, paper=screen, style=simple]{powerdot}
+
+% Common packages
+\usepackage{graphicx}
+\usepackage{pslatex}
+
+% Code stuff
+\usepackage{listings}
+\lstnewenvironment{code}{%
+    \lstset{basicstyle=\fontsize{25}{30}\selectfont\ttfamily}
+}{}
+
+% Global font stuff
+\usepackage{helvet}
+\usepackage{inconsolata}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Slide layout
+\pddefinetemplate[wideslide]{slide}{
+% Options
+    % Title
+    titlefont=\fontsize{45}{50}\selectfont\color{white},
+    titlepos={.05\slidewidth, 0.88\slideheight},
+    % Text
+    textfont=\fontsize{25}{30}\selectfont\color{black},
+    textpos={.05\slidewidth, .7\slideheight}
+}{
+% Commands
+    % Background graphic
+    \rput[bl](0,0){\includegraphics[width=\slidewidth, height=\slideheight]
+        {background.eps}}
+}
+
+% Various macro's
+\newcommand{\imageslide}[1]{
+    \begin{emptyslide}{another slide}
+    \includegraphics[width=\slidewidth, height=\slideheight]{#1}
+    \end{emptyslide}
+}
+
+% Sample document starts here
+\begin{document}
+
+% A slide containing some stuff
+\begin{slide}[method=direct]{a slide}
+Contents of the slide.
+Woot.
+\begin{code}
+main :: IO ()
+\end{code}
+\end{slide}
+
+% Dedicated image slide
+\imageslide{html-tree.eps}
+
+\end{document}
